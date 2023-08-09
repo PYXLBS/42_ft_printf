@@ -6,11 +6,25 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 00:28:40 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 11:14:57 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/09 12:32:18 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+int	ft_handle_content(const char **content, const char *perc)
+{
+	int	len;
+
+	len = 0;
+	while (**content != '\0' && *content != perc)
+	{
+		ft_putchar(**content);
+		len++;
+		(*content)++;
+	}
+	return (len);
+}
 
 int	ft_printf(const char *content, ...)
 {
@@ -24,23 +38,14 @@ int	ft_printf(const char *content, ...)
 	while (content != NULL && *content != '\0')
 	{
 		perc = ft_strchr(content, '%');
-		if (perc == content)
+		if (content == perc)
 		{
-			flag = *(content + 1);
-			if (flag == '\0')
-				break ;
-			else
-			{
-				len = len + ft_convert(flag, args);
-				content = content + 2;
-			}
+			flag = *(perc + 1);
+			len = len + ft_convert(flag, args);
+			content = content + 2;
 		}
 		else
-		{
-			ft_putchar(*content);
-			len++;
-			content++;
-		}
+			len = len + ft_handle_content(&content, perc);
 	}
 	va_end(args);
 	return (len);

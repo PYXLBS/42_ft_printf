@@ -6,7 +6,7 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:37:53 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 10:26:18 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/09 11:55:50 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putuint(unsigned int n)
 	return (ft_putchar(n + '0'));
 }
 
-int	ft_puthex(unsigned int n, char c)
+int	puthex(unsigned int n, char c)
 {
 	char	*hex;
 
