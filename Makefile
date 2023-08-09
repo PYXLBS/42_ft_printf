@@ -6,7 +6,7 @@
 #    By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/09 13:40:16 by pabertha          #+#    #+#              #
-#    Updated: 2023/08/09 14:00:00 by pabertha         ###   ########.fr        #
+#    Updated: 2023/08/09 14:53:31 by pabertha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(NAME) : $(OBJ)
 
 %.o : %.c printf.h
 	$(CC) $(CFLAGS) -c $< -o $@
-	
+
 clean :
 	rm -f $(OBJ)
 
@@ -39,4 +39,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all bonus clean fclean re
+.PHONY : all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:37:53 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 14:08:44 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/09 14:38:22 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	ft_puthex(unsigned int n, char c)
 
 int	ft_putptr_hex(void *ptr)
 {
+	if (ptr == NULL)
+		return (ft_putstr("(nil)"));
 	ft_putstr("0x");
 	return (ft_puthex((unsigned int)(unsigned long)ptr, 'x') + 2);
 }
