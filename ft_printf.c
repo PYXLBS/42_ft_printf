@@ -6,11 +6,24 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 00:28:40 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 13:34:53 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:47:05 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
+	}
+	if ((char)c == '\0')
+		return ((char *)s);
+	return (0);
+}
 
 int	ft_handle_content(const char **content)
 {

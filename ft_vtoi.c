@@ -6,7 +6,7 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:01:36 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 10:08:11 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:52:23 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
+}
+
+int	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
 
 int	ft_putstr(char *s)
