@@ -6,7 +6,7 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:37:53 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/08 14:25:08 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/09 10:26:18 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,26 +41,26 @@ int	ft_putptr_hex(void *ptr)
 	return (ft_puthex((unsigned int)(unsigned long)ptr, 'x') + 2);
 }
 
-int	ft_convert(char flag, va_list arg)
+int	ft_convert(char flag, va_list args)
 {
 	int				print;
 	unsigned long	addr;
 
 	print = 0;
 	if (flag == 'c' || flag == '%')
-		print = ft_putchar(va_arg(arg, int));
+		print = ft_putchar(va_arg(args, int));
 	else if (flag == 's')
-		print = ft_putstr(va_arg(arg, char *));
+		print = ft_putstr(va_arg(args, char *));
 	else if (flag == 'p')
 	{
-		addr = (unsigned long)va_arg(arg, void *);
+		addr = (unsigned long)va_arg(args, void *);
 		print = ft_putptr_hex((void *)addr);
 	}
 	else if (flag == 'd' || flag == 'i')
-		print = ft_putnbr(va_arg(arg, int));
+		print = ft_putnbr(va_arg(args, int));
 	else if (flag == 'u')
-		print = ft_putuint(va_arg(arg, unsigned int));
+		print = ft_putuint(va_arg(args, unsigned int));
 	else if (flag == 'x' || flag == 'X')
-		print = ft_puthex(va_arg(arg, unsigned int), flag);
+		print = ft_puthex(va_arg(args, unsigned int), flag);
 	return (print);
 }

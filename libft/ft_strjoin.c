@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 16:22:31 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 11:14:26 by pabertha         ###   ########.fr       */
+/*   Created: 2023/05/11 17:25:57 by pabertha          #+#    #+#             */
+/*   Updated: 2023/07/03 23:54:34 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
+#include "libft.h"
 
-int					ft_printf(const char *content, ...);
-int					ft_putchar(char c);
-int					ft_putstr(char *s);
-int					ft_putnbr(int n);
-int					ft_putuint(unsigned int n);
-int					ft_puthex(unsigned int n, char c);
-int					ft_putptr_hex(void *ptr);
-int					ft_convert(char flag, va_list arg);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	size_t	i1;
+	size_t	i2;
+	char	*s3;
 
-#endif
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	i1 = ft_strlen(s1);
+	i2 = ft_strlen(s2);
+	s3 = ft_calloc(i1 + i2 + 1, 1);
+	if (s3 == NULL)
+		return (NULL);
+	ft_memcpy(s3, s1, i1);
+	ft_memcpy(s3 + i1, s2, i2);
+	s3[i1 + i2] = '\0';
+	return (s3);
+}

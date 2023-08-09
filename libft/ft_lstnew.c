@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 16:22:31 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 11:14:26 by pabertha         ###   ########.fr       */
+/*   Created: 2023/05/11 17:46:13 by pabertha          #+#    #+#             */
+/*   Updated: 2023/07/03 23:52:46 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
+#include "libft.h"
 
-int					ft_printf(const char *content, ...);
-int					ft_putchar(char c);
-int					ft_putstr(char *s);
-int					ft_putnbr(int n);
-int					ft_putuint(unsigned int n);
-int					ft_puthex(unsigned int n, char c);
-int					ft_putptr_hex(void *ptr);
-int					ft_convert(char flag, va_list arg);
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new_node;
 
-#endif
+	new_node = ft_calloc(1, sizeof(t_list));
+	if (new_node == NULL)
+		return (NULL);
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}

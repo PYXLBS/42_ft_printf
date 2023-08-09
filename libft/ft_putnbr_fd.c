@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 16:22:31 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 11:14:26 by pabertha         ###   ########.fr       */
+/*   Created: 2023/05/11 16:34:31 by pabertha          #+#    #+#             */
+/*   Updated: 2023/07/03 23:53:51 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
+#include "libft.h"
 
-int					ft_printf(const char *content, ...);
-int					ft_putchar(char c);
-int					ft_putstr(char *s);
-int					ft_putnbr(int n);
-int					ft_putuint(unsigned int n);
-int					ft_puthex(unsigned int n, char c);
-int					ft_putptr_hex(void *ptr);
-int					ft_convert(char flag, va_list arg);
-
-#endif
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == INT_MIN)
+		ft_putstr_fd("-2147483648", fd);
+	else
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n = -n;
+		}
+		if (n >= 10)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
+	}
+}

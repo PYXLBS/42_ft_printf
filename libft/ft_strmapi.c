@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 16:22:31 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 11:14:26 by pabertha         ###   ########.fr       */
+/*   Created: 2023/05/11 17:27:08 by pabertha          #+#    #+#             */
+/*   Updated: 2023/07/03 23:54:57 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
+#include "libft.h"
 
-int					ft_printf(const char *content, ...);
-int					ft_putchar(char c);
-int					ft_putstr(char *s);
-int					ft_putnbr(int n);
-int					ft_putuint(unsigned int n);
-int					ft_puthex(unsigned int n, char c);
-int					ft_putptr_hex(void *ptr);
-int					ft_convert(char flag, va_list arg);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	unsigned int	i;
+	char			*str;
 
-#endif
+	if (s == NULL || f == NULL)
+		return (NULL);
+	i = 0;
+	str = ft_calloc(ft_strlen(s) + 1, 1);
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

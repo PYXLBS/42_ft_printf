@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 16:22:31 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 11:14:26 by pabertha         ###   ########.fr       */
+/*   Created: 2023/05/11 17:47:27 by pabertha          #+#    #+#             */
+/*   Updated: 2023/07/03 23:52:51 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
+#include "libft.h"
 
-int					ft_printf(const char *content, ...);
-int					ft_putchar(char c);
-int					ft_putstr(char *s);
-int					ft_putnbr(int n);
-int					ft_putuint(unsigned int n);
-int					ft_puthex(unsigned int n, char c);
-int					ft_putptr_hex(void *ptr);
-int					ft_convert(char flag, va_list arg);
+int	ft_lstsize(t_list *lst)
+{
+	int	i;
 
-#endif
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}

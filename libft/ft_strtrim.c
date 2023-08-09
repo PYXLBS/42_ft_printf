@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/15 16:22:31 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 11:14:26 by pabertha         ###   ########.fr       */
+/*   Created: 2023/05/11 17:28:23 by pabertha          #+#    #+#             */
+/*   Updated: 2023/07/03 23:55:25 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
-# include "libft/libft.h"
-# include <stdarg.h>
+#include "libft.h"
 
-int					ft_printf(const char *content, ...);
-int					ft_putchar(char c);
-int					ft_putstr(char *s);
-int					ft_putnbr(int n);
-int					ft_putuint(unsigned int n);
-int					ft_puthex(unsigned int n, char c);
-int					ft_putptr_hex(void *ptr);
-int					ft_convert(char flag, va_list arg);
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		start;
+	int		end;
+	char	*res;
 
-#endif
+	if (s1 == NULL || set == NULL)
+		return (NULL);
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (s1[start] != '\0' && ft_strchr(set, s1[start]))
+		start++;
+	while (end >= start && ft_strchr(set, s1[end]))
+		end--;
+	res = ft_substr(s1, start, end - start + 1);
+	return (res);
+}
