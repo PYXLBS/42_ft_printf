@@ -6,18 +6,18 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 00:28:40 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 12:32:18 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/09 13:34:53 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int	ft_handle_content(const char **content, const char *perc)
+int	ft_handle_content(const char **content)
 {
 	int	len;
 
 	len = 0;
-	while (**content != '\0' && *content != perc)
+	while (**content != '\0')
 	{
 		ft_putchar(**content);
 		len++;
@@ -45,7 +45,7 @@ int	ft_printf(const char *content, ...)
 			content = content + 2;
 		}
 		else
-			len = len + ft_handle_content(&content, perc);
+			len = len + ft_handle_content(&content);
 	}
 	va_end(args);
 	return (len);
