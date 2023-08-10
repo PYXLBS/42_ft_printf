@@ -6,11 +6,11 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 00:28:40 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 14:54:05 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/10 10:16:20 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -30,7 +30,7 @@ int	ft_handle_content(const char **content)
 	int	len;
 
 	len = 0;
-	while (**content != '\0')
+	while (**content != '\0' && **content != '%')
 	{
 		ft_putchar(**content);
 		len++;

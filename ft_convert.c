@@ -6,11 +6,11 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 21:37:53 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 14:38:22 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/10 10:15:18 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putuint(unsigned int n)
 {
@@ -19,7 +19,7 @@ int	ft_putuint(unsigned int n)
 	return (ft_putchar(n + '0'));
 }
 
-int	ft_puthex(unsigned int n, char c)
+int	ft_puthex(unsigned long n, char c)
 {
 	char	*hex;
 
@@ -38,9 +38,9 @@ int	ft_puthex(unsigned int n, char c)
 int	ft_putptr_hex(void *ptr)
 {
 	if (ptr == NULL)
-		return (ft_putstr("(nil)"));
+		return (ft_putstr("0x0"));
 	ft_putstr("0x");
-	return (ft_puthex((unsigned int)(unsigned long)ptr, 'x') + 2);
+	return (ft_puthex((unsigned long)ptr, 'x') + 2);
 }
 
 int	ft_convert(char flag, va_list args)
@@ -49,7 +49,7 @@ int	ft_convert(char flag, va_list args)
 	unsigned long	addr;
 
 	print = 0;
-	if (flag == 'c' || flag == '%')
+	if (flag == 'c')
 		print = ft_putchar(va_arg(args, int));
 	else if (flag == 's')
 		print = ft_putstr(va_arg(args, char *));
@@ -64,5 +64,7 @@ int	ft_convert(char flag, va_list args)
 		print = ft_putuint(va_arg(args, unsigned int));
 	else if (flag == 'x' || flag == 'X')
 		print = ft_puthex(va_arg(args, unsigned int), flag);
+	else if (flag == '%')
+		print = ft_putchar(flag);
 	return (print);
 }

@@ -6,11 +6,11 @@
 /*   By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 11:01:36 by pabertha          #+#    #+#             */
-/*   Updated: 2023/08/09 13:52:23 by pabertha         ###   ########.fr       */
+/*   Updated: 2023/08/10 10:12:44 by pabertha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(char c)
 {
@@ -31,9 +31,7 @@ int	ft_putstr(char *s)
 {
 	if (s == NULL)
 		return (ft_putstr("(null)"));
-	if (*s != '\0')
-		return (write (1, s, ft_strlen(s)));
-	return (0);
+	return (write (1, s, ft_strlen(s)));
 }
 
 int	ft_putnbr(int n)
@@ -45,12 +43,10 @@ int	ft_putnbr(int n)
 		if (n < 0)
 		{
 			ft_putchar('-');
-			n = -n;
-			return (1 + ft_putnbr(n));
+			return (1 + ft_putnbr(-n));
 		}
 		if (n >= 10)
 			return (ft_putnbr(n / 10) + ft_putchar(n % 10 + '0'));
 		return (ft_putchar(n + '0'));
 	}
-	return (0);
 }
