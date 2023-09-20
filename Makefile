@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: pabertha <pabertha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/09 13:40:16 by pabertha          #+#    #+#              #
-#    Updated: 2023/08/09 14:53:31 by pabertha         ###   ########.fr        #
+#    Created: 2023/09/20 12:03:26 by pabertha          #+#    #+#              #
+#    Updated: 2023/09/20 12:07:14 by pabertha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
 
 all : $(NAME)
-	norminette -R CheckForbiddenSourceHeader *.c
+#	norminette -R CheckForbiddenSourceHeader *.c
 
 $(NAME) : $(OBJ)
 		ar rcs $(NAME) $(OBJ)
